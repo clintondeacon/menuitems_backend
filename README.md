@@ -14,7 +14,7 @@ cp src/.env.example src/.env
 3. Install dependencies
 
 ```bash
-yarn start
+yarn
 /*OR*/
 npm install
 ```
