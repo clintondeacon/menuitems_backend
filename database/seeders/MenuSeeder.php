@@ -6,11 +6,8 @@ use App\Models\Cuisine;
 use App\Models\MenuItem;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Config;
-use Illuminate\Support\Facades\Http;
 
 class MenuSeeder extends Seeder
 {
@@ -26,8 +23,6 @@ class MenuSeeder extends Seeder
 
             $rawResponse = $client->request('GET', 'https://staging.yhangry.com/booking/test/set-menus?page='.$i)->getBody()->getContents();
             $data = json_decode($rawResponse,true);
-
-//            dump('https://staging.yhangry.com/booking/test/set-menus?page='.$i,$data);
 
             foreach ($data['data'] as $item) {
 

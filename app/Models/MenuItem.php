@@ -46,7 +46,7 @@ class MenuItem extends Model
         'price_includes',
         'highlight',
         'available',
-        'number_of_orders'
+//        'number_of_orders'
     ];
 
     /**

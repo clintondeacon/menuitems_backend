@@ -22,7 +22,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         RateLimiter::for('api', function ($request) {
-            return Limit::perSecond(1)->by($request->ip());
+            return Limit::perSecond(10)->by($request->ip());
         });
 
         \App\Models\Cuisine::observe(\App\Observers\CuisineObserver::class);
