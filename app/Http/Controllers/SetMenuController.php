@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\MenuItemCollection;
-use App\Models\Cuisine;
+use App\Http\Resources\MenuItemResource;
 use App\Models\MenuItem;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -32,4 +33,24 @@ class SetMenuController extends Controller
         return new MenuItemCollection($menuItems);
 
     }
+
+    /**
+     * GET: /product.
+     *
+     * @group Products
+     * @unauthenticated
+     *
+     * @queryParam ids integer[] The ids for the products. Example: [1,2]
+     *
+     * @apiResource App\Http\Resources\Products\ApiProductResource
+     * @apiResourceModel App\Models\Product
+     *
+     * @return JsonResponse
+     */
+    public function get(
+        Request $request,
+    ): JsonResponse {
+        return response()->json(new MenuItemResource(MenuItem::find($request->id)));
+    }
+
 }
