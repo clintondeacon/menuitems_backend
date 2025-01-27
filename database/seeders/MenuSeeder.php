@@ -16,13 +16,11 @@ class MenuSeeder extends Seeder
      */
     public function run(): void
     {
-        $pages = 10;
         $client = new Client();
 
-        for($i = 2; $i <= $pages; $i++) {
+        for($i = 2; $i <= 10; $i++) {
 
-            $rawResponse = $client->request('GET', 'https://staging.yhangry.com/booking/test/set-menus?page='.$i)->getBody()->getContents();
-            $data = json_decode($rawResponse,true);
+            $data = json_decode(file_get_contents(storage_path("seeders/menuitems.$i.json")), true);
 
             foreach ($data['data'] as $item) {
 
@@ -58,7 +56,6 @@ class MenuSeeder extends Seeder
                 }
             }
 
-            sleep(1);
         }
 
     }
