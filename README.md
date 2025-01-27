@@ -1,5 +1,6 @@
 # Menu items backend
 
+A frontend for this application is available from https://github.com/clintondeacon/menuitems_frontend
 
 ## Installation
 
